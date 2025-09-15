@@ -101,7 +101,7 @@ void Student::setGroupNum(int n) {
 void Student::showValues() {
     cout << "ПІБ: " << fullName << endl;
     cout << "Номер телефону: " << phone << endl;
-    cout << "День народження: " << birthday.day << birthday.month << birthday.year << endl;
+    cout << "День народження: " << birthday.day << "." << birthday.month << "." << birthday.year << endl;
     cout << "Країна: " << country << endl;
     cout << "Назва університету: " << nameOfUniversity << endl;
     cout << "Місто: " << city << endl;
@@ -115,8 +115,12 @@ char* Student::getFullName() {
     return fullName;
 }
 
-auto Student::getBirthday() {
-    return birthday;
+date Student::getBirthday() {
+    date birthday2;
+    birthday2.day = birthday.day;
+    birthday2.month = birthday.month;
+    birthday2.year = birthday.year;
+    return birthday2;
 }
 
 char* Student::getPhone() {
@@ -156,8 +160,10 @@ int main()
 
     people.showValues();
 
+    date birthday = people.getBirthday();
+
     cout << people.getFullName() << endl;
-   
+    cout << birthday.day << '.' << birthday.month << '.' << birthday.year << endl;
     cout << people.getPhone() << endl;
     cout << people.getCountry() << endl;
     cout << people.getNameOfUniversity() << endl;
