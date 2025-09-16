@@ -12,59 +12,6 @@ struct date {
     int year;
 };
 
-class Point {
-    int x;
-    int y;
-    int x;
-
-public:
-    void setX(int);
-    void setY(int);
-    void setZ(int);
-
-    void showValues();
-
-    int getX();
-    int getY();
-    int getZ();
-};
-
-
-
-void Point::setX(int X) {
-    x = X;
-}
-
-void Point::setY(int Y) {
-    y = Y;
-}
-
-void Point::setZ(int Z) {
-    z = Z;
-}
-
-
-
-void Point::showValues() {
-    cout << x << ", " << y << ", " << z;
-}
-
-
-
-int Point::getX() {
-    return x;
-}
-
-int Point::getY() {
-    return y;
-}
-
-int Point::getZ() {
-    return z;
-}
-
-
-
 
 
 class Student
@@ -77,6 +24,11 @@ class Student
     char* city = nullptr;
     int groupNum = 0;
 public:
+    Student();
+    Student(char* fullName, int day, int month, int year, char* phone, char* country, char* nameOfUniversity, char* city, int group);
+
+    ~Student();
+
     void setFullName(char*);
     void setBirthday(int, int, int);
     void setPhone(char*);
@@ -98,6 +50,30 @@ public:
     char* getCity();
     int getGroupNum();
 };
+
+Student::Student() {};
+
+Student::Student(char* value1, int day, int month, int year, char* value3, char* value4, char* value5, char* value6, int value7) {
+    fullName = value1;
+    birthday.day = day;
+    birthday.month = month;
+    birthday.year = year;
+    phone = value3;
+    country = value4;
+    nameOfUniversity = value5;
+    city = value6;
+    groupNum = value7;
+}
+
+
+
+Student::~Student() {
+    delete[]fullName;
+    delete[]Phone;
+    delete[]Country;
+    delete[]nameOfUniversity;
+    delete[]city;
+}
 
 
 
