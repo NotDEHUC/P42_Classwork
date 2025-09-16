@@ -12,6 +12,61 @@ struct date {
     int year;
 };
 
+class Point {
+    int x;
+    int y;
+    int x;
+
+public:
+    void setX(int);
+    void setY(int);
+    void setZ(int);
+
+    void showValues();
+
+    int getX();
+    int getY();
+    int getZ();
+};
+
+
+
+void Point::setX(int X) {
+    x = X;
+}
+
+void Point::setY(int Y) {
+    y = Y;
+}
+
+void Point::setZ(int Z) {
+    z = Z;
+}
+
+
+
+void Point::showValues() {
+    cout << x << ", " << y << ", " << z;
+}
+
+
+
+int Point::getX() {
+    return x;
+}
+
+int Point::getY() {
+    return y;
+}
+
+int Point::getZ() {
+    return z;
+}
+
+
+
+
+
 class Student
 {
     char* fullName = nullptr;
