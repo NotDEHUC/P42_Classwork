@@ -26,6 +26,33 @@ class Student
 public:
     Student();
     Student(char* fullName, int day, int month, int year, char* phone, char* country, char* nameOfUniversity, char* city, int group);
+    Student(Student&& obj) {
+        fullName = obj.fullName;
+
+        birthday.day = obj.birthday.day;
+        birthday.month = obj.birthday.month;
+        birthday.year = obj.birthday.year;
+    
+        phone = obj.phone;
+
+        country = obj.country;
+
+        nameOfUniversity = obj.nameOfUniversity;
+
+        city = obj.city;
+
+        groupNum = obj.groupNum;
+
+        obj.fullName = nullptr;
+        obj.birthday.day = 0;
+        obj.birthday.month = 0;
+        obj.birthday.year = 0;
+        obj.phone = nullptr;
+        obj.country = nullptr;
+        obj.nameOfUniversity = nullptr;
+        obj.city = nullptr;
+        obj.groupNum = 0;
+    }
 
     ~Student();
 
@@ -69,8 +96,8 @@ Student::Student(char* value1, int day, int month, int year, char* value3, char*
 
 Student::~Student() {
     delete[]fullName;
-    delete[]Phone;
-    delete[]Country;
+    delete[]phone;
+    delete[]country;
     delete[]nameOfUniversity;
     delete[]city;
 }
@@ -174,24 +201,32 @@ int Student::getGroupNum() {
     return groupNum;
 }
 
+
+
+Student studentFactory(char* fullName, int day, int month, int year, char* phone, char* country, char* nameOfUniversity, char* city, int group)
+{
+    Student p{ fullName, day, month, year, phone, country, nameOfUniversity, city, group };
+    return p;
+}
+
+
 int main()
 {
 
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
-    Student people;
-    people.setFullName((char*)"I DONT KNOW");
-    people.setBirthday(5, 9, 2000);
-    people.setPhone((char*)"0961234567");
-    people.setCountry((char*)"USA");
-    people.setNameOfUniversity((char*)"Very Good University");
-    people.setCity((char*)"state Ohayo");
-    people.setGroupNum(666);
+    Student people {studentFactory((char*)"I DONT KNOW", 5, 9,2000, (char*)"0961234567", (char*)"USA", (char*)"Very Good University", (char*)"state Ohayo", 666) };
 
     people.showValues();
 
     date birthday = people.getBirthday();
+    cout << endl;
+    cout << endl;
+    cout << endl;
+    cout << endl;
+    cout << endl;
+    cout << endl;
 
     cout << people.getFullName() << endl;
     cout << birthday.day << '.' << birthday.month << '.' << birthday.year << endl;
